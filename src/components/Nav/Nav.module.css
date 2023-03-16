@@ -1,0 +1,15 @@
+.nav{
+    padding: .14rem;
+    background-color: #e9e2d0;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin-bottom: .4rem;
+    margin-top: .4rem;
+    border-style: groove;
+    border-color: orange;
+}
+
+a{
+    justify-content: end;
+}

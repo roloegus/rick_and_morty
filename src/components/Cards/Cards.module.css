@@ -1,0 +1,9 @@
+.DivCards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #ea9085;
+    border-radius: 10px;
+    padding: 2em;
+
+}
