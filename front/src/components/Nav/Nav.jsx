@@ -12,28 +12,23 @@ class Nav extends React.Component {
         return(
             
                 <div className={style.nav}>
+                        <SearchBar onSearch={this.props.onSearch} className=''/>
                     
-                        <a>
+                        
                             <Link to="/home">
                                 HOME
                             </Link>
-                        </a>
-                        <a>
+                        
+                        
                             <Link to="/about" className=''>
                                 ABOUT
                             </Link>
-                        </a>
-                        <a>
+                        
                             <Link to="/favorites" className=''>
                                 FAVORITES
                             </Link>
-                        </a>
-                        <a>
-                        <SearchBar onSearch={this.props.onSearch} className=''/>
-                        </a>
-                        <a>
+                        
                         <Link to="/" >Logout</Link>
-                        </a>
 
                 </div>
             

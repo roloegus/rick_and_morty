@@ -1,9 +1,10 @@
 //import characters from "../data";
 import { Link } from "react-router-dom";
-import Style from "../Card/Card.module.css";
+import style from "../Card/Card.module.css";
 import {connect} from 'react-redux';
-import { addFavorite, removeFavorite } from "../Redux/actions";
+import { addFavorite, removeFavorite } from "../../redux/actions";
 import { useState, useEffect } from "react";
+import React from "react";
 
 function Card({id, name, species, gender, image, onClose, addFavorite, removeFavorite, myFavorites}) {
 
@@ -29,7 +30,7 @@ function Card({id, name, species, gender, image, onClose, addFavorite, removeFav
 
    return (
      
-      <div  className={Style.container}>
+      <div  className={style.container}>
             
             {isFav ? (
             <button onClick={handleFavorite}>❤️</button>
@@ -37,13 +38,14 @@ function Card({id, name, species, gender, image, onClose, addFavorite, removeFav
             <button onClick={handleFavorite}>🤍</button>
             )}
 
-            <button onClick={() => onClose(id)} className={Style.closeButton}>x</button>
+            <button onClick={() => onClose(id)} className={style.closeButton}>x</button>
             
                <Link to={`/detail/${id}`} >
                   <h2>{name}</h2>
                </Link>
                
                   <img src={image} alt=""/>
+
                   <h2>Species: {species}</h2>
                   <h2>Gender: {gender}</h2>
                
@@ -61,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
    return {
-      myFavorites: state.myFavorites,
+      myFavorites: state.myFavorites
    }
 }
 

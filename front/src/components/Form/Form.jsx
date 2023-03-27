@@ -13,15 +13,18 @@ const Form = ({login}) => {
     })
 
     const handleInputChange = (event) => {
+        const property = event.target.name;
+        const value = event.target.value;
+        
         setUserData({
             ...userData,
-            [event.target.name]: event.target.value
+            [property]: value
         })
         
-        setErrors(validation({
+        validation({
                 ...userData,
-                [event.target.name]: event.target.value
-        }))
+                [property]: value
+        }, errors, setErrors)
     }
 
     const handleSubmit = (event) => {
@@ -49,7 +52,7 @@ const Form = ({login}) => {
             onChange={handleInputChange} />
             {errors.password && <p style={{color: 'red'}} > {errors.password}</p>}
 
-            <button>Login</button>
+            <button type="submit">Login</button>
 
         </form>
     )
