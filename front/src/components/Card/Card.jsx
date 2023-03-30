@@ -1,14 +1,28 @@
 //import characters from "../data";
 import { Link } from "react-router-dom";
 import style from "../Card/Card.module.css";
-import {connect} from 'react-redux';
-import { addFavorite, removeFavorite } from "../../redux/actions";
+import {useDispatch, connect} from 'react-redux';
+import { getFavorites, removeFavorite } from "../../redux/actions";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
 
-function Card({id, name, species, gender, image, onClose, addFavorite, removeFavorite, myFavorites}) {
+function Card({id, name, species, gender, image, onClose, myFavorites}) {
 
    const [isFav, setIsFav] = useState(false);
+   const dispatch = useDispatch();
+   
+   const addFavorite = (character) => {
+      axios
+      .post("http://localhost:3001/rickandmorty/fav", character)
+      .then((res)=>console.log("ok"))
+   }
+
+   const removeFavorite = async (id) => {
+      await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+      dispatch(getFavorites());
+      alert("Eliminado con éxito");
+   }
 
    const handleFavorite = () => {
       if (isFav){
@@ -16,7 +30,7 @@ function Card({id, name, species, gender, image, onClose, addFavorite, removeFav
          removeFavorite(id);
       }else {
          setIsFav(true)
-         addFavorite(id, name, species, gender, image, onClose, addFavorite, removeFavorite)
+         addFavorite({id, name, species, gender, image})
       }
    }
 
@@ -44,19 +58,17 @@ function Card({id, name, species, gender, image, onClose, addFavorite, removeFav
                   <h2>{name}</h2>
                </Link>
                
-                  <img src={image} alt=""/>
+                  <img src={image} alt="" />
 
                   <h2>Species: {species}</h2>
                   <h2>Gender: {gender}</h2>
-               
-            
       </div>
    );
 }
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      addFavorite: (character) => {dispatch(addFavorite(character))},
+      //addFavorite: (character) => {dispatch(addFavorite(character))},
       removeFavorite: (id) => {dispatch(removeFavorite(id))}
    }
 };

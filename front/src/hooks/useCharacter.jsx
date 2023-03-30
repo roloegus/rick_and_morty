@@ -5,15 +5,15 @@ import { getCharacterDetail, cleanDetail } from "../redux/actions";
 
 const useCharacter = () => {
     const dispatch = useDispatch()
-    const character = useSelector((state) => state.getCharacterDetail)
+    const character = useSelector((state) => state.characterDetail)
     const { detailId } = useParams()
 
     useEffect(() => {
-        dispatch(getCharacterDetail(detailId))
+        dispatch(getCharacterDetail(detailId));
 
         return () => {
             dispatch(cleanDetail())
-        }
+        };
     }, [detailId]);
 
     return character;

@@ -1,9 +1,17 @@
 import Card from "../Card/Card";
 import { CardsContainer } from "./styledComponents";
+import { useDispatch  } from "react-redux";
+import { getFavorites } from "../../redux/actions";
+import { useEffect } from "react";
 //import Styled from "./Cards.module.css"
 
 export default function Cards({characters, onClose}) {
-//    const onClose=() => window.alert('Emulamos que se cierra la card');
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(getFavorites());
+   }, []);
+
    return (
      <CardsContainer>
          {
