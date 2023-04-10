@@ -1,5 +1,6 @@
 import { useState } from "react";
 import validation from "./validation";
+import style from "../Form/Form.module.css";
 
 const Form = ({login}) => {
     const [userData, setUserData] = useState({ 
@@ -34,26 +35,31 @@ const Form = ({login}) => {
 
 
     return(
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} class={style.container} >
+            <h1>LOGIN</h1>
+            <h2>
+                <label htmlFor="username">Username: </label>
+                <input 
+                type="text"
+                name="username"
+                value={userData.username}
+                onChange={handleInputChange} />
+                {errors.username && <p style={{color:'red'}}> {errors.username} </p>}
+            </h2>
+            <h2>
+                <label htmlFor="password">Password: </label>
+                <input
+                type="password"
+                name="password"
+                value={userData.password}
+                onChange={handleInputChange} />
+                {errors.password && <p style={{color: 'red'}} > {errors.password}</p>}
+            </h2>
 
-            <label htmlFor="username">Username:</label>
-            <input
-            type="text"
-            name="username"
-            value={userData.username}
-            onChange={handleInputChange} />
-            {errors.username && <p style={{color:'red'}}> {errors.username} </p>}
 
-            <label htmlFor="password">Pasword:</label>
-            <input
-            type="password"
-            name="password"
-            value={userData.password}
-            onChange={handleInputChange} />
-            {errors.password && <p style={{color: 'red'}} > {errors.password}</p>}
+            <button className={style.btn} type="submit">Login</button>
 
-            <button type="submit">Login</button>
-
+            
         </form>
     )
 }

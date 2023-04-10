@@ -1,10 +1,16 @@
-import { useSelector } from "react-redux";
+import { useEffect  } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getFavorites  } from "../../redux/actions";
 import Card from "../Card/Card";
 
-
 const Favorites = () => {
+    const dispatch = useDispatch();
     const favorites = useSelector((state) => state.myFavorites);
     
+    useEffect(()=> {
+        dispatch(getFavorites())
+    }, []);
+
     return (
         <div>
         {
@@ -24,7 +30,6 @@ const Favorites = () => {
         }
         </div>
     )
-
 }
 
 export default Favorites;

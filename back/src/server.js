@@ -3,7 +3,7 @@ const express = require("express")
 const router = require("./routes")
 const morgan = require("morgan")
 const cors = require("cors");
-
+const { conn } = require('./DB_connection');
 // const PORT = process.env.PORT || 3001;
 const PORT = process.env.PORT || 3001;
 
@@ -17,6 +17,7 @@ server.use("/", router);
 // server.use("/", router);
 
 server.listen(PORT, () => {
+    conn.sync({ force: true });
     console.log(`Listening on port ${PORT}`)
 })
 

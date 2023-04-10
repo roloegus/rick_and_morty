@@ -1,0 +1,38 @@
+.container{
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 700px;
+    height: fit-content;
+    padding: 1em;
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+    background-color: #6e5773;
+    color: blanchedalmond;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.login{
+    display:inline-block;
+    justify-content: center;
+    background-color: brown;
+}
+
+.btn {
+    background-color: #603e2f;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+  .btn:hover {
+    background-color:rgb(246, 242, 45);
+    color: #603e2f;
+}
